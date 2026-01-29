@@ -42,17 +42,20 @@ src/
 ## 🔧 Setup & Installation
 
 1. **Clone the repository**
+
    ```bash
    git clone <repository-url>
    cd restaurant-order-booking
    ```
 
 2. **Install dependencies**
+
    ```bash
    npm install
    ```
 
 3. **Run development server**
+
    ```bash
    npm run dev
    ```
@@ -76,6 +79,7 @@ src/
 ## 🎨 Design System
 
 The application uses a custom Tailwind configuration with:
+
 - **Primary Color**: Red-600 (Food theme)
 - **Typography**: Inter (Body) & Poppins (Headings)
 - **Components**: Consistent cards, buttons, and inputs

@@ -13,43 +13,42 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { computed } from 'vue';
 
 const props = defineProps({
   padding: {
     type: String,
     default: 'normal',
-    validator: (value) => ['none', 'sm', 'normal', 'lg'].includes(value)
+    validator: (value) => ['none', 'sm', 'normal', 'lg'].includes(value),
   },
   hover: {
     type: Boolean,
-    default: false
-  }
-})
+    default: false,
+  },
+});
 
 const cardClasses = computed(() => {
-  const classes = ['card', 'overflow-hidden']
+  const classes = ['card', 'overflow-hidden'];
 
   if (props.hover) {
-    classes.push('cursor-pointer')
+    classes.push('cursor-pointer');
   }
 
-  return classes.join(' ')
-})
+  return classes.join(' ');
+});
 
 const contentClasses = computed(() => {
-  const classes = []
+  const classes = [];
 
   if (props.padding === 'none') {
-    // No padding
   } else if (props.padding === 'sm') {
-    classes.push('p-4')
+    classes.push('p-4');
   } else if (props.padding === 'normal') {
-    classes.push('p-6')
+    classes.push('p-6');
   } else if (props.padding === 'lg') {
-    classes.push('p-8')
+    classes.push('p-8');
   }
 
-  return classes.join(' ')
-})
+  return classes.join(' ');
+});
 </script>
