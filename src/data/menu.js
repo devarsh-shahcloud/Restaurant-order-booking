@@ -1,11 +1,3 @@
-export const categories = [
-  { id: 'appetizers', name: 'Appetizers', icon: '🥗', description: 'Start your meal right' },
-  { id: 'main-course', name: 'Main Course', icon: '🍽️', description: 'Delicious main dishes' },
-  { id: 'desserts', name: 'Desserts', icon: '🍰', description: 'Sweet treats to end your meal' },
-  { id: 'beverages', name: 'Beverages', icon: '🥤', description: 'Refreshing drinks' },
-  { id: 'specials', name: 'Specials', icon: '⭐', description: 'Chef recommendations' },
-];
-
 export const menuItems = [
   {
     id: 'app-002',
@@ -15,13 +7,11 @@ export const menuItems = [
     price: 299,
     image:
       'https://images.unsplash.com/photo-1572695157366-5e585ab2b69f?w=800&auto=format&fit=crop',
-    category: 'appetizers',
     tags: ['italian', 'vegetarian'],
     availability: true,
     preparationTime: 10,
     rating: 4.7,
     reviews: 95,
-    featured: true,
     customizations: [],
   },
   {
@@ -30,13 +20,11 @@ export const menuItems = [
     description: 'Crispy vegetable spring rolls with sweet chili dipping sauce',
     price: 249,
     image: 'https://images.unsplash.com/photo-1544025162-d76694265947?w=800&auto=format&fit=crop',
-    category: 'appetizers',
     tags: ['asian', 'vegetarian', 'crispy'],
     availability: true,
     preparationTime: 15,
     rating: 4.3,
     reviews: 67,
-    featured: false,
     customizations: [],
   },
   {
@@ -47,13 +35,11 @@ export const menuItems = [
     price: 399,
     image:
       'https://images.unsplash.com/photo-1513456852971-30c0b8199d4d?w=800&auto=format&fit=crop',
-    category: 'appetizers',
     tags: ['mexican', 'sharing', 'spicy'],
     availability: true,
     preparationTime: 18,
     rating: 4.8,
     reviews: 201,
-    featured: true,
     customizations: [
       { type: 'protein', options: ['None', 'Beans', 'Vegetarian Meat'], prices: [0, 60, 90] },
     ],
@@ -68,13 +54,11 @@ export const menuItems = [
     price: 449,
     image:
       'https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=800&auto=format&fit=crop',
-    category: 'main-course',
     tags: ['indian', 'vegetarian', 'popular'],
     availability: true,
     preparationTime: 25,
     rating: 4.9,
     reviews: 324,
-    featured: true,
     customizations: [
       { type: 'spice', options: ['Medium', 'Spicy'], prices: [0, 0] },
       { type: 'side', options: ['Naan', 'Rice'], prices: [0, 0] },
@@ -88,13 +72,11 @@ export const menuItems = [
     price: 429,
     image:
       'https://images.unsplash.com/photo-1626844131082-256783844137?w=800&auto=format&fit=crop',
-    category: 'main-course',
     tags: ['italian', 'vegetarian', 'comfort food'],
     availability: true,
     preparationTime: 30,
     rating: 4.6,
     reviews: 287,
-    featured: false,
     customizations: [],
   },
   {
@@ -104,13 +86,11 @@ export const menuItems = [
     price: 379,
     image:
       'https://images.unsplash.com/photo-1534939561126-855b8675edd7?w=800&auto=format&fit=crop',
-    category: 'main-course',
     tags: ['asian', 'vegetarian', 'healthy'],
     availability: true,
     preparationTime: 18,
     rating: 4.4,
     reviews: 143,
-    featured: false,
     customizations: [
       { type: 'protein', options: ['Tofu', 'Seitan'], prices: [80, 100] },
       { type: 'spice-level', options: ['Mild', 'Medium', 'Hot'], prices: [0, 0, 0] },
@@ -123,13 +103,11 @@ export const menuItems = [
       'Slow-cooked jackfruit glazed with our house BBQ sauce, served with coleslaw and fries',
     price: 499,
     image: 'https://images.unsplash.com/photo-1544025162-d76694265947?w=800&auto=format&fit=crop',
-    category: 'main-course',
     tags: ['bbq', 'vegan', 'popular'],
     availability: true,
     preparationTime: 35,
     rating: 4.8,
     reviews: 389,
-    featured: true,
     customizations: [{ type: 'side', options: ['Fries', 'Salad'], prices: [0, 0] }],
   },
   {
@@ -139,13 +117,11 @@ export const menuItems = [
     price: 459,
     image:
       'https://images.unsplash.com/photo-1595295333158-4742f28fbd85?w=800&auto=format&fit=crop',
-    category: 'main-course',
     tags: ['italian', 'vegetarian', 'gourmet'],
     availability: true,
     preparationTime: 28,
     rating: 4.7,
     reviews: 178,
-    featured: false,
     customizations: [],
   },
   {
@@ -155,13 +131,11 @@ export const menuItems = [
       'Traditional Thai rice noodles stir-fried with eggs, tofu, peanuts, and bean sprouts',
     price: 399,
     image: 'https://images.unsplash.com/photo-1559314809-0d155014e29e?w=800&auto=format&fit=crop',
-    category: 'main-course',
     tags: ['thai', 'asian', 'noodles'],
     availability: true,
     preparationTime: 20,
     rating: 4.6,
     reviews: 267,
-    featured: false,
     customizations: [
       { type: 'protein', options: ['Tofu', 'Vegetables'], prices: [0, 0] },
       { type: 'spice-level', options: ['Mild', 'Medium', 'Hot'], prices: [0, 0, 0] },
@@ -176,13 +150,11 @@ export const menuItems = [
     price: 299,
     image:
       'https://images.unsplash.com/photo-1524351199678-941a58a3df50?w=800&auto=format&fit=crop',
-    category: 'desserts',
     tags: ['classic', 'sweet', 'popular'],
     availability: true,
     preparationTime: 5,
     rating: 4.8,
     reviews: 456,
-    featured: true,
     customizations: [
       {
         type: 'topping',
@@ -198,13 +170,11 @@ export const menuItems = [
     price: 329,
     image:
       'https://images.unsplash.com/photo-1624353365286-3f8d62daad51?w=800&auto=format&fit=crop',
-    category: 'desserts',
     tags: ['chocolate', 'warm', 'popular'],
     availability: true,
     preparationTime: 15,
     rating: 4.9,
     reviews: 523,
-    featured: true,
     customizations: [],
   },
   {
@@ -215,13 +185,11 @@ export const menuItems = [
     price: 279,
     image:
       'https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=800&auto=format&fit=crop',
-    category: 'desserts',
     tags: ['italian', 'coffee', 'classic'],
     availability: true,
     preparationTime: 5,
     rating: 4.7,
     reviews: 298,
-    featured: false,
     customizations: [],
   },
   {
@@ -232,13 +200,11 @@ export const menuItems = [
     price: 249,
     image:
       'https://images.unsplash.com/photo-1568571780765-9276ac8b75a2?w=800&auto=format&fit=crop',
-    category: 'desserts',
     tags: ['american', 'fruit', 'warm'],
     availability: true,
     preparationTime: 10,
     rating: 4.5,
     reviews: 187,
-    featured: false,
     customizations: [
       {
         type: 'serving',
@@ -249,18 +215,16 @@ export const menuItems = [
   },
   {
     id: 'des-005',
-    name: 'Crème Brûlée',
+    name: 'Creme Brulee',
     description: 'Creamy vanilla custard with a crispy caramelized sugar top',
     price: 279,
     image:
       'https://images.unsplash.com/photo-1470124182917-cc6e71b22ecc?w=800&auto=format&fit=crop',
-    category: 'desserts',
     tags: ['french', 'classic', 'elegant'],
     availability: true,
     preparationTime: 8,
     rating: 4.6,
     reviews: 213,
-    featured: false,
     customizations: [],
   },
   {
@@ -270,13 +234,11 @@ export const menuItems = [
       'Three scoops of ice cream with your choice of toppings, whipped cream, and a cherry',
     price: 229,
     image: 'https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=800&auto=format&fit=crop',
-    category: 'desserts',
     tags: ['cold', 'customizable', 'sweet'],
     availability: true,
     preparationTime: 5,
     rating: 4.4,
     reviews: 342,
-    featured: false,
     customizations: [
       { type: 'flavors', options: ['Vanilla', 'Chocolate', 'Strawberry'], prices: [0, 0, 0] },
       {
@@ -295,13 +257,11 @@ export const menuItems = [
     price: 149,
     image:
       'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=800&auto=format&fit=crop',
-    category: 'beverages',
     tags: ['refreshing', 'cold', 'citrus'],
     availability: true,
     preparationTime: 3,
     rating: 4.6,
     reviews: 198,
-    featured: false,
     customizations: [],
   },
   {
@@ -311,13 +271,11 @@ export const menuItems = [
     price: 179,
     image:
       'https://images.unsplash.com/photo-1517487881594-2787fef5ebf7?w=800&auto=format&fit=crop',
-    category: 'beverages',
     tags: ['coffee', 'cold', 'caffeine'],
     availability: true,
     preparationTime: 3,
     rating: 4.5,
     reviews: 276,
-    featured: false,
     customizations: [
       { type: 'milk', options: ['Regular', 'Almond', 'Oat', 'Soy'], prices: [0, 30, 30, 30] },
       { type: 'sweetener', options: ['None', 'Sugar', 'Honey', 'Stevia'], prices: [0, 0, 15, 0] },
@@ -330,13 +288,11 @@ export const menuItems = [
     price: 199,
     image:
       'https://images.unsplash.com/photo-1505252585461-04db1eb84625?w=800&auto=format&fit=crop',
-    category: 'beverages',
     tags: ['smoothie', 'healthy', 'fruit'],
     availability: true,
     preparationTime: 5,
     rating: 4.7,
     reviews: 234,
-    featured: true,
     customizations: [],
   },
   {
@@ -345,13 +301,11 @@ export const menuItems = [
     description: 'Rich hot chocolate topped with whipped cream and chocolate shavings',
     price: 169,
     image: 'https://images.unsplash.com/photo-1542990253-0d0f5be5f0ed?w=800&auto=format&fit=crop',
-    category: 'beverages',
     tags: ['hot', 'chocolate', 'sweet'],
     availability: true,
     preparationTime: 5,
     rating: 4.6,
     reviews: 167,
-    featured: false,
     customizations: [],
   },
   {
@@ -361,13 +315,11 @@ export const menuItems = [
     price: 149,
     image:
       'https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?w=800&auto=format&fit=crop',
-    category: 'beverages',
     tags: ['soda', 'sweet', 'fizzy'],
     availability: true,
     preparationTime: 2,
     rating: 4.4,
     reviews: 189,
-    featured: false,
     customizations: [
       { type: 'flavor', options: ['Cola', 'Orange', 'Grape', 'Ginger Ale'], prices: [0, 0, 0, 0] },
     ],
@@ -382,13 +334,11 @@ export const menuItems = [
     price: 599,
     image:
       'https://images.unsplash.com/photo-1604909052743-94e838986d24?w=800&auto=format&fit=crop',
-    category: 'specials',
     tags: ['vegetarian', 'daily special', 'gourmet'],
     availability: true,
     preparationTime: 20,
     rating: 4.9,
     reviews: 89,
-    featured: true,
     customizations: [],
   },
   {
@@ -399,13 +349,11 @@ export const menuItems = [
     price: 649,
     image:
       'https://images.unsplash.com/photo-1541529086526-db283c563270?w=800&auto=format&fit=crop',
-    category: 'specials',
     tags: ['mediterranean', 'vegetarian', 'sharing'],
     availability: true,
     preparationTime: 15,
     rating: 4.7,
     reviews: 178,
-    featured: false,
     customizations: [],
   },
   {
@@ -415,13 +363,11 @@ export const menuItems = [
     price: 499,
     image:
       'https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=800&auto=format&fit=crop',
-    category: 'specials',
     tags: ['asian', 'ramen', 'spicy', 'vegetarian'],
     availability: true,
     preparationTime: 25,
     rating: 4.8,
     reviews: 267,
-    featured: true,
     customizations: [
       {
         type: 'spice-level',
@@ -438,15 +384,13 @@ export const menuItems = [
     price: 449,
     image:
       'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=800&auto=format&fit=crop',
-    category: 'specials',
     tags: ['vegan', 'healthy', 'bowl'],
     availability: true,
     preparationTime: 18,
     rating: 4.6,
     reviews: 143,
-    featured: false,
     customizations: [],
   },
 ];
 
-export default { categories, menuItems };
+export default { menuItems };

@@ -1,21 +1,20 @@
 <template>
   <div class="order-detail-view">
     <div class="container mx-auto px-4 py-8">
-      <button
-        @click="router.push('/orders')"
-        class="flex items-center gap-2 text-primary-600 hover:text-primary-700 mb-6"
-      >
+      <button @click="router.push('/orders')"
+        class="flex items-center gap-2 text-primary-600 hover:text-primary-700 mb-6">
         ← Back to Orders
       </button>
 
       <div v-if="loading" class="text-center py-16">
-        <div class="animate-spin text-4xl mb-4">⏳</div>
+        <div
+          class="inline-block animate-spin w-10 h-10 border-4 border-primary-200 border-t-primary-600 rounded-full mb-4">
+        </div>
         <p class="text-gray-600">Loading order details...</p>
       </div>
       <div v-else-if="error" class="text-center py-16">
         <span class="text-8xl mb-6 block">❌</span>
         <h2 class="text-2xl font-semibold mb-4">Order Not Found</h2>
-        <p class="text-gray-600 mb-8">{{ error }}</p>
         <BaseButton @click="router.push('/orders')">Back to Orders</BaseButton>
       </div>
 
@@ -25,27 +24,25 @@
             <h1 class="text-3xl font-display font-bold">Order Details</h1>
             <p class="text-gray-600 font-mono">{{ order.orderId }}</p>
           </div>
-          <span
-            :class="[
-              'mt-4 sm:mt-0 px-4 py-2 rounded-full text-sm font-medium inline-block',
-              order.status === 'pending'
-                ? 'bg-yellow-100 text-yellow-800'
-                : order.status === 'confirmed'
-                  ? 'bg-blue-100 text-blue-800'
-                  : order.status === 'completed'
-                    ? 'bg-green-100 text-green-800'
-                    : order.status === 'cancelled'
-                      ? 'bg-red-100 text-red-800'
-                      : 'bg-gray-100 text-gray-800',
-            ]"
-          >
+          <span :class="[
+            'mt-4 sm:mt-0 px-4 py-2 rounded-full text-sm font-medium inline-block',
+            order.status === 'pending'
+              ? 'bg-yellow-100 text-yellow-800'
+              : order.status === 'confirmed'
+                ? 'bg-blue-100 text-blue-800'
+                : order.status === 'completed'
+                  ? 'bg-green-100 text-green-800'
+                  : order.status === 'cancelled'
+                    ? 'bg-red-100 text-red-800'
+                    : 'bg-gray-100 text-gray-800',
+          ]">
             {{ order.status }}
           </span>
         </div>
 
         <div class="grid md:grid-cols-2 gap-6 mb-8">
           <div class="card p-6">
-            <h2 class="text-lg font-semibold mb-4">👤 Customer Information</h2>
+            <h2 class="text-lg font-semibold mb-4">Customer Information</h2>
             <div class="space-y-2 text-gray-600">
               <p><strong>Name:</strong> {{ order.customerInfo?.name }}</p>
               <p><strong>Email:</strong> {{ order.customerInfo?.email }}</p>
@@ -54,7 +51,7 @@
           </div>
 
           <div class="card p-6">
-            <h2 class="text-lg font-semibold mb-4">📦 Order Information</h2>
+            <h2 class="text-lg font-semibold mb-4">Order Information</h2>
             <div class="space-y-2 text-gray-600">
               <p>
                 <strong>Type:</strong> <span class="capitalize">{{ order.orderType }}</span>
@@ -69,7 +66,7 @@
 
         <div class="card p-6 mb-8">
           <h2 class="text-lg font-semibold mb-4">
-            {{ order.orderType === 'delivery' ? '🚚 Delivery Address' : '🏪 Pickup Details' }}
+            {{ order.orderType === 'delivery' ? 'Delivery Address' : 'Pickup Details' }}
           </h2>
           <div v-if="order.orderType === 'delivery' && order.deliveryAddress" class="text-gray-600">
             <p>{{ order.deliveryAddress.street }}</p>
@@ -85,31 +82,17 @@
         </div>
 
         <div class="card p-6 mb-8">
-          <h2 class="text-lg font-semibold mb-4">🍽️ Order Items</h2>
+          <h2 class="text-lg font-semibold mb-4">Order Items</h2>
           <div class="space-y-4">
-            <div
-              v-for="item in order.items"
-              :key="item.cartItemId"
-              class="flex items-center gap-4 pb-4 border-b last:border-0 last:pb-0"
-            >
-              <img
-                v-if="item.image"
-                :src="item.image"
-                :alt="item.name"
-                class="w-16 h-16 rounded-lg object-cover"
-              />
+            <div v-for="item in order.items" :key="item.cartItemId"
+              class="flex items-center gap-4 pb-4 border-b last:border-0 last:pb-0">
+              <img v-if="item.image" :src="item.image" :alt="item.name" class="w-16 h-16 rounded-lg object-cover" />
               <div class="flex-1">
                 <h3 class="font-medium">{{ item.name }}</h3>
                 <p class="text-sm text-gray-600">Qty: {{ item.quantity }}</p>
-                <div
-                  v-if="item.customizations && Object.keys(item.customizations).length"
-                  class="text-xs text-gray-500 mt-1"
-                >
-                  <span
-                    v-for="(customization, type) in item.customizations"
-                    :key="type"
-                    class="capitalize"
-                  >
+                <div v-if="item.customizations && Object.keys(item.customizations).length"
+                  class="text-xs text-gray-500 mt-1">
+                  <span v-for="(customization, type) in item.customizations" :key="type" class="capitalize">
                     {{ type.replace('-', ' ') }}: {{ customization.name }}
                   </span>
                 </div>
@@ -123,7 +106,7 @@
         </div>
 
         <div class="card p-6 mb-8">
-          <h2 class="text-lg font-semibold mb-4">💰 Payment Summary</h2>
+          <h2 class="text-lg font-semibold mb-4">Payment Summary</h2>
           <div class="space-y-3">
             <div class="flex justify-between">
               <span class="text-gray-600">Subtotal</span>
@@ -150,17 +133,12 @@
 
         <div class="flex flex-col sm:flex-row gap-4">
           <BaseButton variant="primary" @click="handleReorder" :disabled="reordering">
-            {{ reordering ? 'Adding to Cart...' : '🔄 Reorder' }}
+            {{ reordering ? 'Adding to Cart...' : 'Reorder' }}
           </BaseButton>
 
-          <BaseButton
-            v-if="order.status === 'pending'"
-            variant="outline"
-            class="border-red-600 text-red-600 hover:bg-red-50"
-            @click="handleCancelOrder"
-            :disabled="cancelling"
-          >
-            {{ cancelling ? 'Cancelling...' : '❌ Cancel Order' }}
+          <BaseButton v-if="order.status === 'pending'" variant="outline"
+            class="border-gray-300 text-gray-600 hover:bg-gray-50" @click="handleCancelOrder" :disabled="cancelling">
+            {{ cancelling ? 'Cancelling...' : 'Cancel Order' }}
           </BaseButton>
         </div>
       </div>

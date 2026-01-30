@@ -137,7 +137,6 @@ export const useOrderStore = defineStore('order', () => {
             name: item.name,
             price: item.basePrice,
             image: item.image,
-            category: item.category,
           };
 
           cartStore.addItem(menuItem, item.quantity, item.customizations || {});

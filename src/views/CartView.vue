@@ -6,28 +6,13 @@
       <div v-if="cartStore.isEmpty" class="text-center py-16">
         <span class="text-8xl mb-6 block">🛒</span>
         <h2 class="text-2xl font-semibold mb-4">Your cart is empty</h2>
-        <p class="text-gray-600 mb-8">Browse our menu and add some delicious items!</p>
         <BaseButton size="lg" @click="router.push('/menu')">Browse Menu</BaseButton>
       </div>
 
       <div v-else class="grid lg:grid-cols-3 gap-8">
         <div class="lg:col-span-2 space-y-4">
-          <CartItemRow
-            v-for="item in cartStore.cartItems"
-            :key="item.cartItemId"
-            :item="item"
-            @update-quantity="handleQuantityUpdate"
-            @remove="handleRemoveItem"
-          />
-
-          <div class="flex justify-end pt-4">
-            <button
-              @click="confirmClearCart"
-              class="text-red-600 hover:text-red-700 text-sm font-medium"
-            >
-              🗑️ Clear Cart
-            </button>
-          </div>
+          <CartItemRow v-for="item in cartStore.cartItems" :key="item.cartItemId" :item="item"
+            @update-quantity="handleQuantityUpdate" @remove="handleRemoveItem" />
         </div>
 
         <div class="lg:col-span-1">
@@ -57,20 +42,13 @@
               </div>
             </div>
 
-            <BaseButton
-              variant="primary"
-              size="lg"
-              class="w-full"
-              @click="router.push('/checkout')"
-            >
+            <BaseButton variant="primary" size="lg" class="w-full" @click="router.push('/checkout')">
               Proceed to Checkout
             </BaseButton>
 
-            <button
-              @click="router.push('/menu')"
-              class="w-full text-center text-primary-600 hover:text-primary-700 mt-4 text-sm font-medium"
-            >
-              ← Continue Shopping
+            <button @click="router.push('/menu')"
+              class="w-full text-center text-primary-600 hover:text-primary-700 mt-4 text-lg font-medium">
+              Continue Shopping
             </button>
           </div>
         </div>

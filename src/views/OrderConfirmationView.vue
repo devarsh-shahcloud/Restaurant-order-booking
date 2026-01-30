@@ -2,26 +2,24 @@
   <div class="order-confirmation-view">
     <div class="container mx-auto px-4 py-8">
       <div v-if="loading" class="text-center py-16">
-        <div class="animate-spin text-4xl mb-4">⏳</div>
+        <div
+          class="inline-block animate-spin w-10 h-10 border-4 border-primary-200 border-t-primary-600 rounded-full mb-4">
+        </div>
         <p class="text-gray-600">Loading order details...</p>
       </div>
 
       <div v-else-if="error" class="text-center py-16">
         <span class="text-8xl mb-6 block">❌</span>
         <h2 class="text-2xl font-semibold mb-4">Order Not Found</h2>
-        <p class="text-gray-600 mb-8">{{ error }}</p>
         <BaseButton @click="router.push('/menu')">Back to Menu</BaseButton>
       </div>
 
       <div v-else-if="order" class="max-w-2xl mx-auto text-center">
         <div class="mb-8">
-          <span class="text-8xl animate-bounce inline-block">🎉</span>
+          <span class="text-8xl inline-block">🎉</span>
         </div>
 
         <h1 class="text-3xl font-display font-bold mb-4 text-green-600">Order Confirmed!</h1>
-        <p class="text-xl text-gray-600 mb-8">
-          Thank you for your order, {{ order.customerInfo?.name || 'Customer' }}!
-        </p>
 
         <div class="card p-6 mb-8">
           <p class="text-sm text-gray-500 mb-2">Order Number</p>
@@ -37,10 +35,7 @@
               <span class="font-medium capitalize">{{ order.orderType }}</span>
             </div>
 
-            <div
-              v-if="order.orderType === 'delivery' && order.deliveryAddress"
-              class="flex justify-between"
-            >
+            <div v-if="order.orderType === 'delivery' && order.deliveryAddress" class="flex justify-between">
               <span class="text-gray-600">Delivery To</span>
               <span class="font-medium text-right">
                 {{ order.deliveryAddress.street }}<br />
@@ -59,18 +54,16 @@
 
             <div class="flex justify-between">
               <span class="text-gray-600">Status</span>
-              <span
-                :class="[
-                  'px-3 py-1 rounded-full text-sm font-medium',
-                  order.status === 'pending'
-                    ? 'bg-yellow-100 text-yellow-800'
-                    : order.status === 'confirmed'
-                      ? 'bg-blue-100 text-blue-800'
-                      : order.status === 'completed'
-                        ? 'bg-green-100 text-green-800'
-                        : 'bg-gray-100 text-gray-800',
-                ]"
-              >
+              <span :class="[
+                'px-3 py-1 rounded-full text-sm font-medium',
+                order.status === 'pending'
+                  ? 'bg-yellow-100 text-yellow-800'
+                  : order.status === 'confirmed'
+                    ? 'bg-blue-100 text-blue-800'
+                    : order.status === 'completed'
+                      ? 'bg-green-100 text-green-800'
+                      : 'bg-gray-100 text-gray-800',
+              ]">
                 {{ order.status }}
               </span>
             </div>
@@ -78,15 +71,11 @@
             <div class="border-t pt-4">
               <h3 class="font-semibold mb-3">Items Ordered</h3>
               <div class="space-y-2">
-                <div
-                  v-for="item in order.items"
-                  :key="item.cartItemId"
-                  class="flex justify-between text-sm"
-                >
+                <div v-for="item in order.items" :key="item.cartItemId" class="flex justify-between text-sm">
                   <span>{{ item.quantity }}x {{ item.name }}</span>
                   <span class="text-gray-600">{{
                     formatCurrency(item.basePrice * item.quantity)
-                  }}</span>
+                    }}</span>
                 </div>
               </div>
             </div>
@@ -108,7 +97,7 @@
                 <span>Total</span>
                 <span class="text-primary-600">{{
                   formatCurrency(order.pricing?.total || 0)
-                }}</span>
+                  }}</span>
               </div>
             </div>
           </div>

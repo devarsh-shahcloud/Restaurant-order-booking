@@ -12,20 +12,6 @@ const router = createRouter({
       name: 'menu',
       component: () => import('@/views/MenuView.vue'),
       meta: { title: 'Menu - Restaurant Order Booking' },
-      children: [
-        {
-          path: '',
-          name: 'menu-all',
-          component: () => import('@/views/CategoryView.vue'),
-          meta: { title: 'Menu - Restaurant Order Booking' },
-        },
-        {
-          path: ':category',
-          name: 'category',
-          component: () => import('@/views/CategoryView.vue'),
-          meta: { title: 'Category - Restaurant Order Booking' },
-        },
-      ],
     },
     {
       path: '/cart',

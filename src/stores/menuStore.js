@@ -4,7 +4,6 @@ import * as api from '@/services/api.js';
 
 export const useMenuStore = defineStore('menu', () => {
   const items = ref([]);
-  const categories = ref([]);
   const loading = ref(false);
   const error = ref(null);
   const cacheTimestamp = ref(null);
@@ -13,20 +12,8 @@ export const useMenuStore = defineStore('menu', () => {
 
   const allItems = computed(() => items.value);
 
-  const featuredItems = computed(() => {
-    return items.value.filter((item) => item.featured);
-  });
-
   const getItemById = computed(() => {
     return (itemId) => items.value.find((item) => item.id === itemId);
-  });
-
-  const getItemsByCategory = computed(() => {
-    return (categoryId) => items.value.filter((item) => item.category === categoryId);
-  });
-
-  const getCategoryById = computed(() => {
-    return (categoryId) => categories.value.find((cat) => cat.id === categoryId);
   });
 
   const isCacheValid = computed(() => {
@@ -46,26 +33,6 @@ export const useMenuStore = defineStore('menu', () => {
       const data = await api.fetchMenu();
       items.value = data;
       cacheTimestamp.value = Date.now();
-      return data;
-    } catch (e) {
-      error.value = e.message;
-      throw e;
-    } finally {
-      loading.value = false;
-    }
-  }
-
-  async function fetchCategories(force = false) {
-    if (isCacheValid.value && categories.value.length > 0 && !force) {
-      return categories.value;
-    }
-
-    loading.value = true;
-    error.value = null;
-
-    try {
-      const data = await api.fetchCategories();
-      categories.value = data;
       return data;
     } catch (e) {
       error.value = e.message;
@@ -119,16 +86,11 @@ export const useMenuStore = defineStore('menu', () => {
 
   return {
     items,
-    categories,
     loading,
     error,
     allItems,
-    featuredItems,
     getItemById,
-    getItemsByCategory,
-    getCategoryById,
     fetchMenu,
-    fetchCategories,
     fetchItemDetails,
     searchItems,
     clearCache,

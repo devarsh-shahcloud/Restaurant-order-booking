@@ -1,18 +1,3 @@
-# Restaurant Order Booking Platform 🍽️
-
-A modern, responsive web application for browsing restaurant menus, adding items to a cart, customizing orders, and tracking order history. Built with Vue 3, Vite, Pinia, and Tailwind CSS.
-
-## 🚀 Features
-
-- **Menu Browsing**: Browse items by category with lazy-loaded images
-- **Search & Filter**: Real-time search and sorting capabilities
-- **Detailed Item View**: View item details, nutritional info, and add customizations
-- **Shopping Cart**: Manage items, update quantities, and clear cart
-- **Multi-step Checkout**: Smooth checkout process with validation
-- **Order Management**: Track current orders and view order history
-- **Responsive Design**: Fully optimized for mobile, tablet, and desktop
-- **Persistent Data**: Cart and order history saved to local storage
-
 ## 🛠️ Technology Stack
 
 - **Framework**: Vue 3 (Composition API)
@@ -34,7 +19,6 @@ src/
 ├── views/           # Page-level components
 ├── stores/          # Pinia stores for state management
 ├── services/        # API service layer (simulated)
-├── composables/     # Reusable logic (hooks)
 ├── utils/           # Helper functions
 └── data/            # Static data
 ```
@@ -69,21 +53,7 @@ src/
 
 - `/`: Home landing page
 - `/menu`: Menu overview (all items)
-- `/menu/:category`: Filter by category
-- `/menu/:category/:itemId`: Item details
 - `/cart`: Shopping cart
 - `/checkout`: Checkout process
 - `/orders`: Order history
 - `/orders/:orderId`: Order tracking details
-
-## 🎨 Design System
-
-The application uses a custom Tailwind configuration with:
-
-- **Primary Color**: Red-600 (Food theme)
-- **Typography**: Inter (Body) & Poppins (Headings)
-- **Components**: Consistent cards, buttons, and inputs
-
-## 📄 License
-
-MIT License - feel free to use for your own projects!

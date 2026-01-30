@@ -14,24 +14,20 @@
         <div class="flex items-center justify-between mb-8">
           <div v-for="(stepName, index) in steps" :key="index" class="flex items-center flex-1">
             <div class="flex flex-col items-center flex-1">
-              <div
-                :class="[
-                  'w-10 h-10 rounded-full flex items-center justify-center font-bold',
-                  currentStep > index
-                    ? 'bg-green-500 text-white'
-                    : currentStep === index
-                      ? 'bg-primary-600 text-white'
-                      : 'bg-gray-200 text-gray-600',
-                ]"
-              >
+              <div :class="[
+                'w-10 h-10 rounded-full flex items-center justify-center font-bold',
+                currentStep > index
+                  ? 'bg-green-500 text-white'
+                  : currentStep === index
+                    ? 'bg-primary-600 text-white'
+                    : 'bg-gray-200 text-gray-600',
+              ]">
                 {{ currentStep > index ? '✓' : index + 1 }}
               </div>
               <span class="text-xs mt-2 text-center">{{ stepName }}</span>
             </div>
-            <div
-              v-if="index < steps.length - 1"
-              :class="['h-1 flex-1', currentStep > index ? 'bg-green-500' : 'bg-gray-200']"
-            ></div>
+            <div v-if="index < steps.length - 1"
+              :class="['h-1 flex-1', currentStep > index ? 'bg-green-500' : 'bg-gray-200']"></div>
           </div>
         </div>
 
@@ -41,37 +37,22 @@
             <div class="space-y-4">
               <div>
                 <label class="block font-medium mb-2">Full Name *</label>
-                <input
-                  v-model="formData.name"
-                  type="text"
-                  class="input-field"
-                  :class="{ 'border-red-500': errors.name }"
-                  placeholder="John Doe"
-                />
+                <input v-model="formData.name" type="text" class="input-field"
+                  :class="{ 'border-red-500': errors.name }" placeholder="John Doe" />
                 <p v-if="errors.name" class="text-red-600 text-sm mt-1">{{ errors.name }}</p>
               </div>
 
               <div>
                 <label class="block font-medium mb-2">Phone Number *</label>
-                <input
-                  v-model="formData.phone"
-                  type="tel"
-                  class="input-field"
-                  :class="{ 'border-red-500': errors.phone }"
-                  placeholder="1234567890"
-                />
+                <input v-model="formData.phone" type="tel" class="input-field"
+                  :class="{ 'border-red-500': errors.phone }" placeholder="1234567890" />
                 <p v-if="errors.phone" class="text-red-600 text-sm mt-1">{{ errors.phone }}</p>
               </div>
 
               <div>
                 <label class="block font-medium mb-2">Email *</label>
-                <input
-                  v-model="formData.email"
-                  type="email"
-                  class="input-field"
-                  :class="{ 'border-red-500': errors.email }"
-                  placeholder="john@example.com"
-                />
+                <input v-model="formData.email" type="email" class="input-field"
+                  :class="{ 'border-red-500': errors.email }" placeholder="john@example.com" />
                 <p v-if="errors.email" class="text-red-600 text-sm mt-1">{{ errors.email }}</p>
               </div>
             </div>
@@ -80,32 +61,24 @@
           <div v-if="currentStep === 1">
             <h2 class="text-xl font-semibold mb-6">Order Type</h2>
             <div class="grid grid-cols-2 gap-4">
-              <button
-                @click="formData.orderType = 'delivery'"
-                :class="[
-                  'p-6 rounded-lg border-2 transition-all',
-                  formData.orderType === 'delivery'
-                    ? 'border-primary-600 bg-primary-50'
-                    : 'border-gray-200 hover:border-gray-300',
-                ]"
-              >
+              <button @click="formData.orderType = 'delivery'" :class="[
+                'p-6 rounded-lg border-2 transition-all',
+                formData.orderType === 'delivery'
+                  ? 'border-primary-600 bg-primary-50'
+                  : 'border-gray-200 hover:border-gray-300',
+              ]">
                 <span class="text-4xl mb-2 block">🚚</span>
                 <h3 class="font-semibold">Delivery</h3>
-                <p class="text-sm text-gray-600">Get it delivered</p>
               </button>
 
-              <button
-                @click="formData.orderType = 'pickup'"
-                :class="[
-                  'p-6 rounded-lg border-2 transition-all',
-                  formData.orderType === 'pickup'
-                    ? 'border-primary-600 bg-primary-50'
-                    : 'border-gray-200 hover:border-gray-300',
-                ]"
-              >
+              <button @click="formData.orderType = 'pickup'" :class="[
+                'p-6 rounded-lg border-2 transition-all',
+                formData.orderType === 'pickup'
+                  ? 'border-primary-600 bg-primary-50'
+                  : 'border-gray-200 hover:border-gray-300',
+              ]">
                 <span class="text-4xl mb-2 block">🏪</span>
                 <h3 class="font-semibold">Pickup</h3>
-                <p class="text-sm text-gray-600">Pickup from store</p>
               </button>
             </div>
           </div>
@@ -116,13 +89,8 @@
               <div class="space-y-4">
                 <div>
                   <label class="block font-medium mb-2">Street Address *</label>
-                  <input
-                    v-model="formData.address"
-                    type="text"
-                    class="input-field"
-                    :class="{ 'border-red-500': errors.address }"
-                    placeholder="123 Main St"
-                  />
+                  <input v-model="formData.address" type="text" class="input-field"
+                    :class="{ 'border-red-500': errors.address }" placeholder="123 Main St" />
                   <p v-if="errors.address" class="text-red-600 text-sm mt-1">
                     {{ errors.address }}
                   </p>
@@ -130,37 +98,21 @@
 
                 <div>
                   <label class="block font-medium mb-2">Apartment/Suite</label>
-                  <input
-                    v-model="formData.apartment"
-                    type="text"
-                    class="input-field"
-                    placeholder="Apt 4B"
-                  />
+                  <input v-model="formData.apartment" type="text" class="input-field" placeholder="Apt 4B" />
                 </div>
 
                 <div class="grid grid-cols-2 gap-4">
                   <div>
                     <label class="block font-medium mb-2">City *</label>
-                    <input
-                      v-model="formData.city"
-                      type="text"
-                      class="input-field"
-                      :class="{ 'border-red-500': errors.city }"
-                      placeholder="New York"
-                    />
+                    <input v-model="formData.city" type="text" class="input-field"
+                      :class="{ 'border-red-500': errors.city }" placeholder="New York" />
                     <p v-if="errors.city" class="text-red-600 text-sm mt-1">{{ errors.city }}</p>
                   </div>
 
                   <div>
                     <label class="block font-medium mb-2">Zip Code *</label>
-                    <input
-                      v-model="formData.zipCode"
-                      type="text"
-                      class="input-field"
-                      :class="{ 'border-red-500': errors.zipCode }"
-                      placeholder="10001"
-                      maxlength="5"
-                    />
+                    <input v-model="formData.zipCode" type="text" class="input-field"
+                      :class="{ 'border-red-500': errors.zipCode }" placeholder="10001" maxlength="5" />
                     <p v-if="errors.zipCode" class="text-red-600 text-sm mt-1">
                       {{ errors.zipCode }}
                     </p>
@@ -169,12 +121,8 @@
 
                 <div>
                   <label class="block font-medium mb-2">Delivery Instructions</label>
-                  <textarea
-                    v-model="formData.deliveryInstructions"
-                    class="input-field"
-                    rows="3"
-                    placeholder="Ring doorbell, leave at door, etc."
-                  ></textarea>
+                  <textarea v-model="formData.deliveryInstructions" class="input-field" rows="3"
+                    placeholder="Ring doorbell, leave at door, etc."></textarea>
                 </div>
               </div>
             </div>
@@ -184,12 +132,7 @@
               <div class="space-y-4">
                 <div>
                   <label class="block font-medium mb-2">Pickup Date *</label>
-                  <input
-                    v-model="formData.pickupDate"
-                    type="date"
-                    class="input-field"
-                    :min="minDate"
-                  />
+                  <input v-model="formData.pickupDate" type="date" class="input-field" :min="minDate" />
                 </div>
 
                 <div>
@@ -208,22 +151,13 @@
           <div v-if="currentStep === 3">
             <h2 class="text-xl font-semibold mb-6">Payment Method</h2>
             <div class="space-y-3">
-              <label
-                v-for="method in paymentMethods"
-                :key="method.id"
-                :class="[
-                  'flex items-center gap-4 p-4 rounded-lg border-2 cursor-pointer transition-all',
-                  formData.paymentMethod === method.id
-                    ? 'border-primary-600 bg-primary-50'
-                    : 'border-gray-200 hover:border-gray-300',
-                ]"
-              >
-                <input
-                  type="radio"
-                  v-model="formData.paymentMethod"
-                  :value="method.id"
-                  class="w-5 h-5"
-                />
+              <label v-for="method in paymentMethods" :key="method.id" :class="[
+                'flex items-center gap-4 p-4 rounded-lg border-2 cursor-pointer transition-all',
+                formData.paymentMethod === method.id
+                  ? 'border-primary-600 bg-primary-50'
+                  : 'border-gray-200 hover:border-gray-300',
+              ]">
+                <input type="radio" v-model="formData.paymentMethod" :value="method.id" class="w-5 h-5" />
                 <div class="flex-1">
                   <div class="font-semibold">{{ method.name }}</div>
                   <div class="text-sm text-gray-600">{{ method.description }}</div>
@@ -267,15 +201,11 @@
               <div>
                 <h3 class="font-semibold mb-3">Order Items ({{ cartStore.itemCount }})</h3>
                 <div class="space-y-2">
-                  <div
-                    v-for="item in cartStore.cartItems"
-                    :key="item.cartItemId"
-                    class="flex justify-between text-sm"
-                  >
+                  <div v-for="item in cartStore.cartItems" :key="item.cartItemId" class="flex justify-between text-sm">
                     <span>{{ item.quantity }}x {{ item.name }}</span>
                     <span class="font-semibold">{{
                       formatCurrency(item.basePrice * item.quantity)
-                    }}</span>
+                      }}</span>
                   </div>
                 </div>
               </div>
@@ -313,14 +243,8 @@
           <BaseButton v-if="currentStep < steps.length - 1" variant="primary" @click="nextStep">
             Continue →
           </BaseButton>
-          <BaseButton
-            v-else
-            variant="primary"
-            @click="submitOrder"
-            :loading="submitting"
-            :disabled="submitting"
-          >
-            {{ submitting ? 'Placing Order...' : 'Place Order 🎉' }}
+          <BaseButton v-else variant="primary" @click="submitOrder" :loading="submitting" :disabled="submitting">
+            {{ submitting ? 'Placing Order...' : 'Place Order' }}
           </BaseButton>
         </div>
       </div>
@@ -365,15 +289,11 @@ const paymentMethods = [
   {
     id: 'cash',
     name: 'Cash on Delivery',
-    description: 'Pay with cash when your order arrives',
-    icon: '💵',
   },
-  { id: 'card', name: 'Credit/Debit Card', description: 'Secure payment with card', icon: '💳' },
+  { id: 'card', name: 'Credit/Debit Card' },
   {
     id: 'wallet',
     name: 'Digital Wallet',
-    description: 'PayPal, Apple Pay, Google Pay',
-    icon: '📱',
   },
 ];
 
@@ -454,12 +374,12 @@ const submitOrder = async () => {
       deliveryAddress:
         formData.value.orderType === 'delivery'
           ? {
-              street: formData.value.address,
-              apartment: formData.value.apartment,
-              city: formData.value.city,
-              zipCode: formData.value.zipCode,
-              instructions: formData.value.deliveryInstructions,
-            }
+            street: formData.value.address,
+            apartment: formData.value.apartment,
+            city: formData.value.city,
+            zipCode: formData.value.zipCode,
+            instructions: formData.value.deliveryInstructions,
+          }
           : null,
       pickupTime:
         formData.value.orderType === 'pickup'

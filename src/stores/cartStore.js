@@ -82,7 +82,6 @@ export const useCartStore = defineStore('cart', () => {
           basePrice: menuItem.price,
           quantity,
           customizations,
-          category: menuItem.category,
           addedAt: Date.now(),
         };
 

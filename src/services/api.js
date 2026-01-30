@@ -1,4 +1,4 @@
-import { menuItems, categories } from '@/data/menu.js';
+import { menuItems } from '@/data/menu.js';
 import { getItem, setItem, STORAGE_KEYS } from '@/utils/storage.js';
 
 const delay = (min = 300, max = 800) => {
@@ -12,22 +12,11 @@ const simulateError = () => {
   }
 };
 
-export const fetchMenu = async (categoryId = null) => {
+export const fetchMenu = async () => {
   await delay();
   simulateError();
 
-  if (categoryId) {
-    return menuItems.filter((item) => item.category === categoryId);
-  }
-
   return menuItems;
-};
-
-export const fetchCategories = async () => {
-  await delay(200, 400);
-  simulateError();
-
-  return categories;
 };
 
 export const fetchItemDetails = async (itemId) => {
@@ -120,7 +109,6 @@ export const cancelOrder = async (orderId) => {
 
 export default {
   fetchMenu,
-  fetchCategories,
   fetchItemDetails,
   searchMenuItems,
   submitOrder,

@@ -1,6 +1,7 @@
 <template>
   <button :type="type" :class="buttonClasses" :disabled="disabled || loading" v-bind="$attrs">
-    <span v-if="loading" class="inline-block animate-spin mr-2">⏳</span>
+    <div v-if="loading"
+      class="inline-block animate-spin mr-2 w-4 h-4 border-2 border-current border-t-transparent rounded-full"></div>
     <span v-if="icon && !loading" class="mr-2">{{ icon }}</span>
     <slot></slot>
   </button>
@@ -65,7 +66,7 @@ const buttonClasses = computed(() => {
   } else if (props.variant === 'ghost') {
     classes.push('bg-transparent', 'text-gray-700', 'hover:bg-gray-100');
   } else if (props.variant === 'danger') {
-    classes.push('bg-red-600', 'text-white', 'hover:bg-red-700', 'focus:ring-red-500');
+    classes.push('bg-gray-700', 'text-white', 'hover:bg-gray-800', 'focus:ring-gray-500');
   }
 
   if (props.size === 'sm') {
