@@ -2,7 +2,9 @@
   <div class="menu-view">
     <div class="container mx-auto px-4 py-8">
       <div v-if="menuStore.loading" class="flex flex-col items-center justify-center py-16">
-        <div class="animate-spin w-12 h-12 border-4 border-primary-200 border-t-primary-600 rounded-full"></div>
+        <div
+          class="animate-spin w-12 h-12 border-4 border-primary-200 border-t-primary-600 rounded-full"
+        ></div>
         <p class="text-gray-600 mt-4">Loading menu...</p>
       </div>
 
@@ -12,8 +14,12 @@
 
           <div class="flex flex-col md:flex-row gap-4 w-full md:w-auto">
             <div class="relative w-full md:w-64">
-              <input v-model="searchQuery" type="text" placeholder="Search items..."
-                class="w-full px-4 py-2 pl-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500" />
+              <input
+                v-model="searchQuery"
+                type="text"
+                placeholder="Search items..."
+                class="w-full px-4 py-2 pl-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500"
+              />
               <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">🔍</span>
             </div>
           </div>
@@ -27,7 +33,12 @@
         </div>
 
         <div v-else class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <MenuItemCard v-for="item in filteredItems" :key="item.id" :item="item" @add-to-cart="handleAddToCart" />
+          <MenuItemCard
+            v-for="item in filteredItems"
+            :key="item.id"
+            :item="item"
+            @add-to-cart="handleAddToCart"
+          />
         </div>
       </div>
     </div>

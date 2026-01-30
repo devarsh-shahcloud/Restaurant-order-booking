@@ -2,7 +2,7 @@
 
 - **Framework**: Vue 3 (Composition API)
 - **Build Tool**: Vite
-- **Routing**: Vue Router 4 (Nested & Dynamic Routes)
+- **Routing**: Vue Router 4
 - **State Management**: Pinia
 - **Styling**: Tailwind CSS
 - **Icons**: Emoji & CSS-based
@@ -18,7 +18,7 @@ src/
 │   └── cart/        # Cart-related components
 ├── views/           # Page-level components
 ├── stores/          # Pinia stores for state management
-├── services/        # API service layer (simulated)
+├── services/        # API service layer
 ├── utils/           # Helper functions
 └── data/            # Static data
 ```
@@ -51,9 +51,9 @@ src/
 
 ## 📱 Pages & Routes
 
-- `/`: Home landing page
 - `/menu`: Menu overview (all items)
 - `/cart`: Shopping cart
 - `/checkout`: Checkout process
 - `/orders`: Order history
+- `/order-confirmation/:orderId`: Order confirmation details
 - `/orders/:orderId`: Order tracking details

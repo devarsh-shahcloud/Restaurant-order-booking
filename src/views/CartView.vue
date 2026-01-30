@@ -32,7 +32,7 @@
                 <span>Delivery Fee</span>
                 <span>{{
                   cartStore.deliveryFee === 0 ? 'FREE' : formatCurrency(cartStore.deliveryFee)
-                }}</span>
+                  }}</span>
               </div>
               <div class="border-t pt-3">
                 <div class="flex justify-between text-xl font-bold">
@@ -75,9 +75,4 @@ const handleRemoveItem = (cartItemId) => {
   cartStore.removeItem(cartItemId);
 };
 
-const confirmClearCart = () => {
-  if (confirm('Are you sure you want to clear your entire cart?')) {
-    cartStore.clearCart();
-  }
-};
 </script>

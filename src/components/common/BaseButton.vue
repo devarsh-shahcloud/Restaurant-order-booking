@@ -1,7 +1,9 @@
 <template>
   <button :type="type" :class="buttonClasses" :disabled="disabled || loading" v-bind="$attrs">
-    <div v-if="loading"
-      class="inline-block animate-spin mr-2 w-4 h-4 border-2 border-current border-t-transparent rounded-full"></div>
+    <div
+      v-if="loading"
+      class="inline-block animate-spin mr-2 w-4 h-4 border-2 border-current border-t-transparent rounded-full"
+    ></div>
     <span v-if="icon && !loading" class="mr-2">{{ icon }}</span>
     <slot></slot>
   </button>

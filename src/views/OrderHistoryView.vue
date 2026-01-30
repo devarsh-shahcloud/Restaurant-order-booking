@@ -5,9 +5,9 @@
 
       <div v-if="orderStore.loading" class="text-center py-16">
         <div
-          class="inline-block animate-spin w-10 h-10 border-4 border-primary-200 border-t-primary-600 rounded-full mb-4">
-        </div>
-        <p class="text-gray-600"> Loading orders...</p>
+          class="inline-block animate-spin w-10 h-10 border-4 border-primary-200 border-t-primary-600 rounded-full mb-4"
+        ></div>
+        <p class="text-gray-600">Loading orders...</p>
       </div>
 
       <div v-else-if="!orderStore.hasOrders" class="text-center py-16">
@@ -17,25 +17,30 @@
       </div>
 
       <div v-else class="space-y-4">
-        <div v-for="order in orderStore.allOrders" :key="order.orderId"
+        <div
+          v-for="order in orderStore.allOrders"
+          :key="order.orderId"
           class="card p-6 hover:shadow-lg transition-shadow cursor-pointer"
-          @click="router.push(`/orders/${order.orderId}`)">
+          @click="router.push(`/orders/${order.orderId}`)"
+        >
           <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div class="flex-1">
               <div class="flex items-center gap-3 mb-2">
                 <span class="font-mono font-bold text-primary-600">{{ order.orderId }}</span>
-                <span :class="[
-                  'px-2 py-1 rounded-full text-xs font-medium',
-                  order.status === 'pending'
-                    ? 'bg-yellow-100 text-yellow-800'
-                    : order.status === 'confirmed'
-                      ? 'bg-blue-100 text-blue-800'
-                      : order.status === 'completed'
-                        ? 'bg-green-100 text-green-800'
-                        : order.status === 'cancelled'
-                          ? 'bg-red-100 text-red-800'
-                          : 'bg-gray-100 text-gray-800',
-                ]">
+                <span
+                  :class="[
+                    'px-2 py-1 rounded-full text-xs font-medium',
+                    order.status === 'pending'
+                      ? 'bg-yellow-100 text-yellow-800'
+                      : order.status === 'confirmed'
+                        ? 'bg-blue-100 text-blue-800'
+                        : order.status === 'completed'
+                          ? 'bg-green-100 text-green-800'
+                          : order.status === 'cancelled'
+                            ? 'bg-red-100 text-red-800'
+                            : 'bg-gray-100 text-gray-800',
+                  ]"
+                >
                   {{ order.status }}
                 </span>
               </div>
@@ -63,9 +68,11 @@
               </div>
 
               <div class="flex gap-2">
-                <button @click.stop="handleReorder(order.orderId)"
+                <button
+                  @click.stop="handleReorder(order.orderId)"
                   class="px-3 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors text-sm"
-                  title="Reorder">
+                  title="Reorder"
+                >
                   Reorder
                 </button>
               </div>
