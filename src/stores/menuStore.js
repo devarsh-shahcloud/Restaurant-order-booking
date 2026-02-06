@@ -1,8 +1,8 @@
-import { defineStore } from 'pinia';
-import { ref, computed } from 'vue';
-import * as api from '@/services/api.js';
+import { defineStore } from "pinia";
+import { ref, computed } from "vue";
+import * as api from "@/services/api.js";
 
-export const useMenuStore = defineStore('menu', () => {
+export const useMenuStore = defineStore("menu", () => {
   const items = ref([]);
   const loading = ref(false);
   const error = ref(null);
@@ -42,44 +42,6 @@ export const useMenuStore = defineStore('menu', () => {
     }
   }
 
-  async function fetchItemDetails(itemId) {
-    const cachedItem = getItemById.value(itemId);
-    if (cachedItem) {
-      return cachedItem;
-    }
-
-    loading.value = true;
-    error.value = null;
-
-    try {
-      const data = await api.fetchItemDetails(itemId);
-      if (!data) {
-        throw new Error('Item not found');
-      }
-      return data;
-    } catch (e) {
-      error.value = e.message;
-      throw e;
-    } finally {
-      loading.value = false;
-    }
-  }
-
-  async function searchItems(query) {
-    loading.value = true;
-    error.value = null;
-
-    try {
-      const results = await api.searchMenuItems(query);
-      return results;
-    } catch (e) {
-      error.value = e.message;
-      return [];
-    } finally {
-      loading.value = false;
-    }
-  }
-
   function clearCache() {
     cacheTimestamp.value = null;
   }
@@ -91,8 +53,6 @@ export const useMenuStore = defineStore('menu', () => {
     allItems,
     getItemById,
     fetchMenu,
-    fetchItemDetails,
-    searchItems,
     clearCache,
   };
 });

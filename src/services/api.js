@@ -1,5 +1,5 @@
-import { menuItems } from '@/data/menu.js';
-import { getItem, setItem, STORAGE_KEYS } from '@/utils/storage.js';
+import { menuItems } from "@/data/menu.js";
+import { getItem, setItem, STORAGE_KEYS } from "@/utils/storage.js";
 
 const delay = (min = 300, max = 800) => {
   const ms = Math.floor(Math.random() * (max - min + 1)) + min;
@@ -8,7 +8,7 @@ const delay = (min = 300, max = 800) => {
 
 const simulateError = () => {
   if (Math.random() < 0.05) {
-    throw new Error('Network request failed. Please try again.');
+    throw new Error("Network request failed. Please try again.");
   }
 };
 
@@ -19,19 +19,11 @@ export const fetchMenu = async () => {
   return menuItems;
 };
 
-export const fetchItemDetails = async (itemId) => {
-  await delay();
-  simulateError();
-
-  const item = menuItems.find((item) => item.id === itemId);
-  return item || null;
-};
-
 export const searchMenuItems = async (query) => {
   await delay(200, 500);
   simulateError();
 
-  if (!query || query.trim() === '') {
+  if (!query || query.trim() === "") {
     return [];
   }
 
@@ -39,8 +31,12 @@ export const searchMenuItems = async (query) => {
 
   return menuItems.filter((item) => {
     const nameMatch = item.name.toLowerCase().includes(lowerQuery);
-    const descriptionMatch = item.description.toLowerCase().includes(lowerQuery);
-    const tagsMatch = item.tags.some((tag) => tag.toLowerCase().includes(lowerQuery));
+    const descriptionMatch = item.description
+      .toLowerCase()
+      .includes(lowerQuery);
+    const tagsMatch = item.tags.some((tag) =>
+      tag.toLowerCase().includes(lowerQuery),
+    );
 
     return nameMatch || descriptionMatch || tagsMatch;
   });
@@ -55,7 +51,7 @@ export const submitOrder = async (orderData) => {
   const order = {
     ...orderData,
     orderId,
-    status: 'pending',
+    status: "pending",
     createdAt: Date.now(),
     updatedAt: Date.now(),
     estimatedTime: 45,
@@ -92,7 +88,7 @@ export const updateOrderStatus = async (orderId, newStatus) => {
   const orderIndex = orders.findIndex((o) => o.orderId === orderId);
 
   if (orderIndex === -1) {
-    throw new Error('Order not found');
+    throw new Error("Order not found");
   }
 
   orders[orderIndex].status = newStatus;
@@ -104,12 +100,11 @@ export const updateOrderStatus = async (orderId, newStatus) => {
 };
 
 export const cancelOrder = async (orderId) => {
-  return updateOrderStatus(orderId, 'cancelled');
+  return updateOrderStatus(orderId, "cancelled");
 };
 
 export default {
   fetchMenu,
-  fetchItemDetails,
   searchMenuItems,
   submitOrder,
   fetchOrderHistory,

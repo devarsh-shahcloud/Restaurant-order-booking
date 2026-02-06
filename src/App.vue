@@ -14,10 +14,8 @@
           <router-link to="/cart" class="relative">
             <button class="p-2 rounded-lg hover:bg-gray-100 transition-colors">
               <span class="text-2xl">🛒</span>
-              <span
-                v-if="cartStore.itemCount > 0"
-                class="absolute -top-1 -right-1 bg-primary-600 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center"
-              >
+              <span v-if="cartStore.itemCount > 0"
+                class="absolute -top-1 -right-1 bg-primary-600 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
                 {{ cartStore.itemCount }}
               </span>
             </button>
@@ -29,18 +27,10 @@
 
         <Transition name="slide-down">
           <nav v-if="showMobileMenu" class="md:hidden py-4 border-t">
-            <router-link
-              @click="closeMobileMenu"
-              to="/menu"
-              class="block py-2 px-4 hover:bg-gray-100 rounded-lg"
-            >
+            <router-link @click="closeMobileMenu" to="/menu" class="block py-2 px-4 hover:bg-gray-100 rounded-lg">
               Menu
             </router-link>
-            <router-link
-              @click="closeMobileMenu"
-              to="/orders"
-              class="block py-2 px-4 hover:bg-gray-100 rounded-lg"
-            >
+            <router-link @click="closeMobileMenu" to="/orders" class="block py-2 px-4 hover:bg-gray-100 rounded-lg">
               Orders
             </router-link>
           </nav>

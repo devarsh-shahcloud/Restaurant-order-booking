@@ -1,7 +1,5 @@
 <template>
-  <div
-    class="not-found-view min-h-[60vh] flex flex-col items-center justify-center p-4 text-center"
-  >
+  <div class="not-found-view min-h-[60vh] flex flex-col items-center justify-center p-4 text-center">
     <div class="text-9xl mb-4">404</div>
     <h1 class="text-3xl font-display font-bold mb-4">Page Not Found</h1>
     <p class="text-gray-600 mb-8 max-w-md">

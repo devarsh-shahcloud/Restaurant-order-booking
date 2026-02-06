@@ -1,17 +1,15 @@
 <template>
   <div class="order-detail-view">
     <div class="container mx-auto px-4 py-8">
-      <button
-        @click="router.push('/orders')"
-        class="flex items-center gap-2 text-primary-600 hover:text-primary-700 mb-6"
-      >
+      <button @click="router.push('/orders')"
+        class="flex items-center gap-2 text-primary-600 hover:text-primary-700 mb-6">
         ← Back to Orders
       </button>
 
       <div v-if="loading" class="text-center py-16">
         <div
-          class="inline-block animate-spin w-10 h-10 border-4 border-primary-200 border-t-primary-600 rounded-full mb-4"
-        ></div>
+          class="inline-block animate-spin w-10 h-10 border-4 border-primary-200 border-t-primary-600 rounded-full mb-4">
+        </div>
         <p class="text-gray-600">Loading order details...</p>
       </div>
       <div v-else-if="error" class="text-center py-16">
@@ -26,20 +24,18 @@
             <h1 class="text-3xl font-display font-bold">Order Details</h1>
             <p class="text-gray-600 font-mono">{{ order.orderId }}</p>
           </div>
-          <span
-            :class="[
-              'mt-4 sm:mt-0 px-4 py-2 rounded-full text-sm font-medium inline-block',
-              order.status === 'pending'
-                ? 'bg-yellow-100 text-yellow-800'
-                : order.status === 'confirmed'
-                  ? 'bg-blue-100 text-blue-800'
-                  : order.status === 'completed'
-                    ? 'bg-green-100 text-green-800'
-                    : order.status === 'cancelled'
-                      ? 'bg-red-100 text-red-800'
-                      : 'bg-gray-100 text-gray-800',
-            ]"
-          >
+          <span :class="[
+            'mt-4 sm:mt-0 px-4 py-2 rounded-full text-sm font-medium inline-block',
+            order.status === 'pending'
+              ? 'bg-yellow-100 text-yellow-800'
+              : order.status === 'confirmed'
+                ? 'bg-blue-100 text-blue-800'
+                : order.status === 'completed'
+                  ? 'bg-green-100 text-green-800'
+                  : order.status === 'cancelled'
+                    ? 'bg-red-100 text-red-800'
+                    : 'bg-gray-100 text-gray-800',
+          ]">
             {{ order.status }}
           </span>
         </div>
@@ -88,29 +84,15 @@
         <div class="card p-6 mb-8">
           <h2 class="text-lg font-semibold mb-4">Order Items</h2>
           <div class="space-y-4">
-            <div
-              v-for="item in order.items"
-              :key="item.cartItemId"
-              class="flex items-center gap-4 pb-4 border-b last:border-0 last:pb-0"
-            >
-              <img
-                v-if="item.image"
-                :src="item.image"
-                :alt="item.name"
-                class="w-16 h-16 rounded-lg object-cover"
-              />
+            <div v-for="item in order.items" :key="item.cartItemId"
+              class="flex items-center gap-4 pb-4 border-b last:border-0 last:pb-0">
+              <img v-if="item.image" :src="item.image" :alt="item.name" class="w-16 h-16 rounded-lg object-cover" />
               <div class="flex-1">
                 <h3 class="font-medium">{{ item.name }}</h3>
                 <p class="text-sm text-gray-600">Qty: {{ item.quantity }}</p>
-                <div
-                  v-if="item.customizations && Object.keys(item.customizations).length"
-                  class="text-xs text-gray-500 mt-1"
-                >
-                  <span
-                    v-for="(customization, type) in item.customizations"
-                    :key="type"
-                    class="capitalize"
-                  >
+                <div v-if="item.customizations && Object.keys(item.customizations).length"
+                  class="text-xs text-gray-500 mt-1">
+                  <span v-for="(customization, type) in item.customizations" :key="type" class="capitalize">
                     {{ type.replace('-', ' ') }}: {{ customization.name }}
                   </span>
                 </div>
@@ -154,13 +136,8 @@
             {{ reordering ? 'Adding to Cart...' : 'Reorder' }}
           </BaseButton>
 
-          <BaseButton
-            v-if="order.status === 'pending'"
-            variant="outline"
-            class="border-gray-300 text-gray-600 hover:bg-gray-50"
-            @click="handleCancelOrder"
-            :disabled="cancelling"
-          >
+          <BaseButton v-if="order.status === 'pending'" variant="outline"
+            class="border-gray-300 text-gray-600 hover:bg-gray-50" @click="handleCancelOrder" :disabled="cancelling">
             {{ cancelling ? 'Cancelling...' : 'Cancel Order' }}
           </BaseButton>
         </div>

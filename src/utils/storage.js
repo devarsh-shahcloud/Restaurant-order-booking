@@ -1,7 +1,6 @@
 const STORAGE_KEYS = {
-  CART: 'restaurant_cart',
-  ORDERS: 'restaurant_orders',
-  USER_PREFS: 'restaurant_user_prefs',
+  CART: "restaurant_cart",
+  ORDERS: "restaurant_orders",
 };
 
 export const getItem = (key, defaultValue = null) => {
@@ -19,8 +18,8 @@ export const setItem = (key, value) => {
     localStorage.setItem(key, JSON.stringify(value));
     return true;
   } catch (error) {
-    if (error.name === 'QuotaExceededError') {
-      console.error('localStorage quota exceeded');
+    if (error.name === "QuotaExceededError") {
+      console.error("localStorage quota exceeded");
       clearOldOrders();
     } else {
       console.error(`Error setting item in localStorage: ${key}`, error);
@@ -44,7 +43,7 @@ export const clear = () => {
     localStorage.clear();
     return true;
   } catch (error) {
-    console.error('Error clearing localStorage', error);
+    console.error("Error clearing localStorage", error);
     return false;
   }
 };
@@ -53,10 +52,12 @@ export const clearOldOrders = () => {
   try {
     const orders = getItem(STORAGE_KEYS.ORDERS, []);
     const thirtyDaysAgo = Date.now() - 30 * 24 * 60 * 60 * 1000;
-    const recentOrders = orders.filter((order) => order.createdAt > thirtyDaysAgo);
+    const recentOrders = orders.filter(
+      (order) => order.createdAt > thirtyDaysAgo,
+    );
     setItem(STORAGE_KEYS.ORDERS, recentOrders);
   } catch (error) {
-    console.error('Error clearing old orders', error);
+    console.error("Error clearing old orders", error);
   }
 };
 

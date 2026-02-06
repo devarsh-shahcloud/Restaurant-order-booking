@@ -1,9 +1,9 @@
-import { defineStore } from 'pinia';
-import { ref, computed, watch } from 'vue';
-import { getItem, setItem, STORAGE_KEYS } from '@/utils/storage.js';
-import { calculateTax, calculateDeliveryFee } from '@/utils/currency.js';
+import { defineStore } from "pinia";
+import { ref, computed, watch } from "vue";
+import { getItem, setItem, STORAGE_KEYS } from "@/utils/storage.js";
+import { calculateTax, calculateDeliveryFee } from "@/utils/currency.js";
 
-export const useCartStore = defineStore('cart', () => {
+export const useCartStore = defineStore("cart", () => {
   const items = ref([]);
   const loading = ref(false);
   const error = ref(null);
@@ -97,7 +97,9 @@ export const useCartStore = defineStore('cart', () => {
 
   function removeItem(cartItemId) {
     try {
-      const index = items.value.findIndex((item) => item.cartItemId === cartItemId);
+      const index = items.value.findIndex(
+        (item) => item.cartItemId === cartItemId,
+      );
       if (index !== -1) {
         items.value.splice(index, 1);
         return true;
@@ -112,7 +114,7 @@ export const useCartStore = defineStore('cart', () => {
   function updateQuantity(cartItemId, newQuantity) {
     try {
       if (newQuantity < 1 || newQuantity > 99) {
-        throw new Error('Quantity must be between 1 and 99');
+        throw new Error("Quantity must be between 1 and 99");
       }
 
       const item = items.value.find((item) => item.cartItemId === cartItemId);

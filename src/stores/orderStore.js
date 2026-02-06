@@ -1,9 +1,9 @@
-import { defineStore } from 'pinia';
-import { ref, computed } from 'vue';
-import * as api from '@/services/api.js';
-import { useCartStore } from './cartStore.js';
+import { defineStore } from "pinia";
+import { ref, computed } from "vue";
+import * as api from "@/services/api.js";
+import { useCartStore } from "./cartStore.js";
 
-export const useOrderStore = defineStore('order', () => {
+export const useOrderStore = defineStore("order", () => {
   const orders = ref([]);
   const currentOrder = ref(null);
   const loading = ref(false);
@@ -12,15 +12,15 @@ export const useOrderStore = defineStore('order', () => {
   const allOrders = computed(() => orders.value);
 
   const pendingOrders = computed(() => {
-    return orders.value.filter((order) => order.status === 'pending');
+    return orders.value.filter((order) => order.status === "pending");
   });
 
   const completedOrders = computed(() => {
-    return orders.value.filter((order) => order.status === 'completed');
+    return orders.value.filter((order) => order.status === "completed");
   });
 
   const cancelledOrders = computed(() => {
-    return orders.value.filter((order) => order.status === 'cancelled');
+    return orders.value.filter((order) => order.status === "cancelled");
   });
 
   const getOrderById = computed(() => {
@@ -79,7 +79,7 @@ export const useOrderStore = defineStore('order', () => {
 
       const order = await api.fetchOrderById(orderId);
       if (!order) {
-        throw new Error('Order not found');
+        throw new Error("Order not found");
       }
 
       currentOrder.value = order;
@@ -119,10 +119,11 @@ export const useOrderStore = defineStore('order', () => {
 
   async function reorder(orderId) {
     try {
-      const order = getOrderById.value(orderId) || (await fetchOrderById(orderId));
+      const order =
+        getOrderById.value(orderId) || (await fetchOrderById(orderId));
 
       if (!order) {
-        throw new Error('Order not found');
+        throw new Error("Order not found");
       }
 
       const cartStore = useCartStore();

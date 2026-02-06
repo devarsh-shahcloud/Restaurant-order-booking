@@ -1,26 +1,26 @@
-export const isValidEmail = (email) => {
+const isValidEmail = (email) => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return emailRegex.test(email);
 };
 
-export const isValidPhone = (phone) => {
+const isValidPhone = (phone) => {
   const phoneRegex = /^\d{10}$/;
-  return phoneRegex.test(phone.replace(/\D/g, ''));
+  return phoneRegex.test(phone.replace(/\D/g, ""));
 };
 
-export const isValidZipCode = (zipCode) => {
+const isValidZipCode = (zipCode) => {
   const zipRegex = /^\d{5}$/;
   return zipRegex.test(zipCode);
 };
 
-export const isRequired = (value) => {
-  if (typeof value === 'string') {
+const isRequired = (value) => {
+  if (typeof value === "string") {
     return value.trim().length > 0;
   }
   return value !== null && value !== undefined;
 };
 
-export const hasMinLength = (value, minLength) => {
+const hasMinLength = (value, minLength) => {
   return value && value.length >= minLength;
 };
 
@@ -46,17 +46,4 @@ export const validateField = (fieldName, value, rules = {}) => {
   }
 
   return null;
-};
-
-export const validateForm = (formData, validationRules) => {
-  const errors = {};
-
-  for (const [field, rules] of Object.entries(validationRules)) {
-    const error = validateField(field, formData[field], rules);
-    if (error) {
-      errors[field] = error;
-    }
-  }
-
-  return errors;
 };
